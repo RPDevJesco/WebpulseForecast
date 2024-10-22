@@ -1,0 +1,41 @@
+<idea-plugin>
+    <id>com.gdme.plugins.webpulseforecast</id>
+    <name>WebPulse Forecast</name>
+    <vendor email="support@gamedevmadeeasy.com" url="https://www.gamedevmadeeasy.com">GameDevMadeEasy</vendor>
+
+    <description><![CDATA[
+    WebPulse Forecast is a powerful tool for web developers working with HTML5 projects. It provides accurate performance estimations and insights to help optimize your web applications.
+    <br><br>
+    Key features:
+    <ul>
+        <li>Analyzes HTML, CSS, JavaScript, and JSON files in your project</li>
+        <li>Estimates resource usage and performance metrics</li>
+        <li>Detects usage of popular frameworks like React, Vue, Angular, and more</li>
+        <li>Identifies potential performance issues and provides suggestions</li>
+        <li>Supports custom elements and external resource analysis</li>
+    </ul>
+    WebPulse Forecast helps you make informed decisions about your web project's architecture and performance optimizations.
+  ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <postStartupActivity implementation="com.gdme.webpulseforecast.WebPulseForecastPlugin"/>
+        <toolWindow id="WebPulse Forecast" secondary="true" icon="AllIcons.General.Modified" anchor="right"
+                    factoryClass="com.gdme.webpulseforecast.WebPulseForecastToolWindowFactory"/>
+        <projectConfigurable groupId="tools" displayName="WebPulse Forecast"
+                             id="com.gdme.plugins.webpulseforecast.WebPulseForecastConfigurable"
+                             instance="com.gdme.webpulseforecast.WebPulseForecastConfigurable"/>
+    </extensions>
+
+    <actions>
+        <action id="com.gdme.webpulseforecast.AnalyzeProjectAction"
+                class="com.gdme.webpulseforecast.AnalyzeProjectAction"
+                text="Analyze with WebPulse Forecast"
+                description="Analyze the current project with WebPulse Forecast">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
